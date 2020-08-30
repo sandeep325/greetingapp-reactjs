@@ -1,17 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+let curDate= new Date();
+curDate=curDate.getHours();
+
+let greeting="";
+let stylecss={};
+let greetingimg="";
+if(curDate>=1 && curDate <12)
+{
+greeting="Good Morning";
+stylecss.color="#59b300";
+greetingimg="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3_0vaeOON4KekFOFHodEulN5QMiQz1FpeCg&usqp=CAU";
+}
+else if(curDate>=12 && curDate<20)
+{
+  greeting="Good Afternoon";
+stylecss.color="#ffcc00";
+greetingimg= "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSEuYEusUXxuW6xCgqpCs-6_qBFLpGheApb3g&usqp=CAU";
+
+
+}
+else
+{
+  greeting="Good Night";
+stylecss.color=" #404040";
+greetingimg="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXeqLCR74Co5zAQxJXQgxzCKUsDcrgIUPG0g&usqp=CAU";
+
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+              <React.Fragment>
+              <div>
+               <h1>Hello user <span style={stylecss}>{greeting}</span> </h1>
+               
+               <img  className="imgstyle" src={greetingimg} alt='{greeting}"img from internet"'/>
+               
+               </div>
+               </React.Fragment>,
+               document.getElementById("root")
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
